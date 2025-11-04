@@ -89,6 +89,9 @@ function renderList(){
   const list = getSaved();
   const container = qs('#tabs-list');
   container.innerHTML = '';
+  // Ensure the left-side Gestión menu always shows Dashboard General
+  // even when there are no saved configurations.
+  try{ renderGestionTabs(list); }catch(e){}
   // Mejorado: Estado vacío con clase CSS
   if(!list.length){ container.innerHTML = '<div class="empty-state">No hay configuraciones guardadas.</div>'; return }
 
