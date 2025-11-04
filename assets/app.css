@@ -1,0 +1,223 @@
+#gestion-parent{padding:0;margin-top:6px}
+#gestion-tabs{list-style:none;padding:6px;margin:6px 0;border-left:2px solid rgba(0,0,0,0.04)}
+.gestion-tabs li{margin:6px 0}
+.gestion-tab-item button.active{background:var(--accent);color:#fff;border-radius:4px;padding:6px}
+
+/* Toggle styles */
+.gestion-toggle{display:block;align-items:center;gap:8px;background:transparent;border:none;padding:10px 6px;width:100%;text-align:left;cursor:pointer;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:inherit;color:inherit;font-size:14px;line-height:1}
+.gestion-toggle .gestion-current{font-weight:400;color:inherit;margin-left:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px;line-height:1}
+.gestion-parent:not(.open) .gestion-current{display:none}
+.gestion-parent.open .gestion-current{display:inline-block;color:var(--muted);font-size:13px;margin-left:6px}
+.gestion-toggle[aria-expanded="false"] .gestion-current{display:none !important}
+.gestion-toggle[aria-expanded="true"] .gestion-current{display:inline-block !important;color:var(--muted);font-size:13px;margin-left:6px}
+.gestion-toggle .caret{margin-left:auto;color:#777}
+.gestion-tabs.hidden{display:none}
+.gestion-parent.open .gestion-tabs{display:block}
+:root{
+  --sidebar-bg:#2f3b3f;
+  --accent:#f7a54a;
+  --muted:#6b6b6b;
+}
+*{box-sizing:border-box;font-family:Segoe UI, Roboto, Arial, sans-serif}
+body,html,#root{height:100%;margin:0}
+.app{display:flex;height:100vh}
+.sidebar{width:260px;background:var(--sidebar-bg);color:#cd410a;padding:18px}
+.sidebar .brand{font-weight:700;margin-bottom:18px}
+.sidebar nav ul{list-style:none;padding:0;margin:0}
+.sidebar nav li{padding:10px 6px;border-radius:6px;margin-bottom:6px;color:#eee}
+.sidebar nav li a { color: inherit; text-decoration: none; }
+.sidebar nav li.active{background:#243033;color:#cd410a;font-weight: 600;}
+.main{flex:1;display:flex;flex-direction:column;background:#f3f4f6}
+.topbar{padding:18px 24px;border-bottom:1px solid #e6e6e6;background:white}
+.content{display:flex;gap:20px;padding:20px}
+.left-col{flex:1}
+.right-col{width:320px;background:#fafafa;padding:16px;border-left:1px solid #eee}
+.menu{margin-bottom:16px}
+.menu .menu-item{display:block;padding:12px;border-radius:6px;background:#fff;border:1px solid #eee;width:100%;text-align:left}
+.panel{background:#fff;padding:18px;border-radius:6px;border:1px solid #eee}
+.panel-header{display:flex;justify-content:space-between;align-items:center}
+label{display:block;margin-top:12px;font-weight:600;color:#444;margin-bottom: 4px;}
+input[type=text]{width:100%;padding:8px;margin-top:6px;border:1px solid #ddd;border-radius:4px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.grid-3 label,.grid-4 label{display:flex;align-items:center;gap:8px;background:#fbfbfb;padding:6px;border:1px solid #f0f0f0;border-radius:4px;font-weight: 400; margin-top: 0;}
+.form-actions{margin-top:16px;display:flex;gap:8px}
+button{background:var(--accent);border:none;color:white;padding:8px 12px;border-radius:4px;cursor:pointer;font-weight: 600;}
+button:hover{opacity: 0.9;}
+button.secondary{background:#ddd;color:#333}
+button.button-primary { background:var(--accent);color:#fff;padding:8px 12px;border-radius:6px;border:none;cursor:pointer }
+.tabs-list{margin-top:12px; overflow-x: auto;}
+.tab-item{border:1px solid #eee;padding:10px;border-radius:6px;margin-bottom:8px;background:#fff;display:flex;justify-content:space-between;align-items:center}
+.meta{font-size:13px;color:var(--muted)}
+.actions button{margin-left:6px;padding:6px 8px}
+.hint{font-size:13px;color:var(--muted);margin-top:8px}
+.links{list-style:none;padding:0}
+.links li{padding:6px 0;color:#555}
+@media(max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}.grid-4{grid-template-columns:repeat(2,1fr)}.right-col{display:none}}
+
+.hidden{display:none}
+.option-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.option{background:#fff;border:1px solid #eee;padding:10px;border-radius:6px;text-align:left;cursor:pointer; width: 100%;}
+.option:hover{background:#f0f0f0}
+.rc-hint{margin-top:12px;color:var(--muted);font-size:13px}
+
+.option.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* Styles for the Gestión Pago Proveedores dynamic sublist */
+#gestion-parent{padding:0;margin-top:6px}
+#gestion-tabs{list-style:none;padding:6px;margin:6px 0;border-left:2px solid rgba(0,0,0,0.04)}
+.gestion-tabs li{margin:6px 0}
+.gestion-tab-item button.active{background:var(--accent);color:#fff;border-radius:4px;padding:6px}
+
+/* Multiselect dropdown for skip routes */
+.multiselect{position:relative;max-width:540px}
+.multiselect-toggle{background:#fff;border:1px solid #ddd;padding:10px;border-radius:6px;cursor:pointer;color:#333}
+.multiselect-toggle:after{content:'▾';float:right;color:#777}
+.multiselect-dropdown{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border:1px solid #e6e6e6;border-radius:6px;padding:8px;max-height:240px;overflow:auto;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.multiselect-item{display:flex;align-items:center;padding:6px;border-radius:4px}
+.multiselect-item:hover{background:#f6f6f6}
+.multiselect .meta{margin-top:8px}
+.multiselect .placeholder{color:#777}
+.multiselect-dropdown label{display:flex;align-items:center;gap:8px;padding:4px; font-weight: 400; margin-top: 0;}
+
+/* Mejorado: Estilos para el filtro del multiselect */
+.multiselect-search {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  margin-top: 0; /* Sobrescribir estilo de input general */
+}
+.multiselect-no-results {
+  padding: 10px;
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Modal styles (basic) */
+/* Mejorado: Modal overlay ahora permite scroll vertical */
+#modal-overlay{
+  position:fixed;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  background:rgba(0,0,0,0.35);
+  z-index:60;
+  display:none;
+  align-items: flex-start; /* Alinea arriba para scroll */
+  justify-content:center;
+  overflow-y: auto; /* Permite scroll si el modal es muy alto */
+  padding: 40px 15px; /* Espacio para que no pegue a los bordes */
+}
+#modal-overlay:not(.hidden){display:flex}
+
+#modal{
+  background:#fff;
+  border-radius:8px;
+  max-width:760px;
+  width:100%;
+  padding:18px 24px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  position:relative;
+  margin: 0; /* Reset margin */
+}
+#modal{transition: transform .18s ease, opacity .18s ease; transform: translateY(-8px); opacity:0}
+#modal.open{transform: translateY(0); opacity:1}
+#modal-close{
+  position:absolute;
+  right:12px;
+  top:12px;
+  border:none;
+  background:#eee;
+  padding:6px 8px;
+  border-radius:4px;
+  cursor:pointer;
+  color: #333;
+}
+#modal-close:hover { background: #ddd; }
+
+#modal-form .grid-3, #modal-form .grid-4 { margin-top: 8px; }
+#modal .grid-3{max-height:260px;overflow:auto; border: 1px solid #f0f0f0; padding: 8px; border-radius: 4px;}
+#modal .grid-4{max-height:260px;overflow:auto; border: 1px solid #f0f0f0; padding: 8px; border-radius: 4px;}
+#modal input[type=text]{width:100%;padding:8px;margin-top:6px;border:1px solid #ddd;border-radius:4px}
+
+/* Mejorado: Estilo para "Seleccionar todo" en modal */
+.checkbox-actions {
+  margin-bottom: -4px; /* Pegar al grid */
+  margin-top: 4px;
+}
+.checkbox-actions label {
+  font-size: 13px;
+  font-weight: normal;
+  color: #555;
+  margin-top: 0;
+}
+
+.modal-actions {
+  display:flex;
+  gap:8px;
+  margin-top:16px;
+}
+
+/* Tooltip */
+#tooltip{
+  position:fixed;
+  background:rgba(0,0,0,0.85);
+  color:#fff;
+  padding:8px 10px;
+  border-radius:6px;
+  max-width:320px;
+  pointer-events:none;
+  font-size:13px;
+  line-height:1.3;
+  z-index:12000
+}
+
+/* Toasts */
+#toasts {
+  position:fixed;
+  right:16px;
+  top:16px;
+  z-index:1000;
+}
+.toast{background:#333;color:#fff;padding:10px 12px;border-radius:6px;margin-top:8px;box-shadow:0 6px 18px rgba(0,0,0,0.12);opacity:0.98}
+.toast.info{background:#2d3748}
+.toast.success{background:#2f855a}
+.toast.error{background:#c53030}
+
+/* Table small tweaks */
+#tabs-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#tabs-list th, #tabs-list td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+}
+#tabs-list thead tr {
+  background: #f5f5f5;
+}
+#tabs-list tbody tr:hover {
+  background: #fdfdfd;
+}
+#tabs-list th {
+  font-weight: 600;
+  color: #333;
+}
+table td .view{display:inline-block;padding:6px 8px;border-radius:4px;background:#fafafa;border:1px solid #eee;color:#333; font-size: 14px;}
+table td .view:hover{background:#fff;border-color:#ddd;cursor:default}
+
+/* Mejorado: Estilo para el estado vacío */
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border: 1px dashed #ddd;
+  color: #777;
+}

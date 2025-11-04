@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Providers Dashboard Tabs Config</title>
+    <link rel="stylesheet" href="assets/app.css" />
+  </head>
+  <body>
+    <div class="app">
+        <aside class="sidebar">
+        <div class="brand">Servicios Pullman Bus</div>
+        <nav>
+          <ul>
+            <li>Panel</li>
+            <li>Reservas</li>
+            <li>Programados</li>
+            <li>Cuentas</li>
+            <li>Administrar</li>
+            <li>Control de Seguridad</li>
+            <li class="active"><a href="#" id="nav-config">Configuración</a></li>
+            <li>Informes</li>
+            <li id="gestion-parent">
+              <button id="gestion-toggle" aria-expanded="false" class="gestion-toggle">Gestión Pago Proveedores <span id="gestion-current" class="gestion-current">Dashboard General</span> <span class="caret">▾</span></button>
+              <ul id="gestion-tabs" class="gestion-tabs hidden"></ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <h1>Configuración</h1>
+        </header>
+
+        <section class="content">
+          <div class="left-col">
+            <div class="menu">
+              <div class="menu-item active">Providers Dashboard Tabs Config</div>
+              <div class="hint">Esta opción crea pestañas que se mostrarán debajo de "Gestión Pago Proveedores"</div>
+            </div>
+
+            <div id="config-panel" class="panel">
+              <div class="panel-header">
+                <h2 style="margin:0">Configuración de Pestañas</h2>
+                <div>
+                  <button id="create-new" class="button-primary">Crear Nuevo</button>
+                </div>
+              </div>
+
+              <h3>Configuraciones guardadas</h3>
+              <div id="tabs-list" class="tabs-list"></div>
+            </div>
+
+            <div id="skip-panel" class="panel hidden">
+              <h2>Providers General Dashboard Skip Config</h2>
+              <p class="meta">Selecciona las rutas maestras que se usarán para la lógica de "skip".</p>
+
+              <form id="skip-form">
+                <label for="skip-toggle">Rutas maestras disponibles</label>
+
+                <div class="multiselect" id="skip-multiselect">
+                  <div class="multiselect-toggle" id="skip-toggle" role="button" tabindex="0" aria-expanded="false">Seleccione rutas...</div>
+                  <div class="multiselect-dropdown hidden" id="skip-routes">
+                    <input type="text" id="skip-search" class="multiselect-search" placeholder="Buscar rutas..." />
+                    <div id="skip-routes-list"></div>
+                    <div id="skip-no-results" class="multiselect-no-results hidden">No se encontraron resultados</div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" id="save-skip">Guardar selección</button>
+                  <button type="button" id="generate-skip" class="secondary">Limpiar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <aside class="right-col">
+            <h3>Configuraciones disponibles</h3>
+            <div class="option-list">
+              <button id="opt-tabs" class="option">providers dashboard tabs config</button>
+              <button id="opt-skip" class="option">providers general dashboard skip config</button>
+            </div>
+            <div class="rc-hint">Selecciona una opción para abrir su panel en la columna izquierda.</div>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <div id="modal-overlay" class="hidden">
+      <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button id="modal-close" aria-label="Cerrar modal">X</button>
+        <h3 id="modal-title">Crear nueva pestaña</h3>
+        <form id="modal-form">
+          <label for="modal-tab-name">Nombre de la pestaña</label>
+          <input type="text" id="modal-tab-name" placeholder="Escribe el nombre" required />
+
+          <label>Rutas maestras</label>
+          <div class="checkbox-actions">
+            <label><input type="checkbox" id="modal-routes-all" /> <span>Seleccionar todas</span></label>
+          </div>
+          <input type="text" id="modal-search" class="multiselect-search" placeholder="Buscar rutas en modal..." />
+          <div id="modal-routes" class="grid-3"></div>
+          <div id="modal-routes-no-results" class="multiselect-no-results hidden">No se encontraron rutas</div>
+
+          <label>Owners</label>
+          <div class="checkbox-actions">
+            <label><input type="checkbox" id="modal-owners-all" /> <span>Seleccionar todos</span></label>
+          </div>
+          <div id="modal-owners" class="grid-4"></div>
+
+          <div class="modal-actions">
+            <button type="submit" id="modal-save">Guardar</button>
+            <button type="button" id="modal-cancel" class="secondary">Cancelar</button>
+          </div>
+          <input type="hidden" id="modal-edit-id" />
+        </form>
+      </div>
+    </div>
+
+    <div id="tooltip" class="hidden" aria-hidden="true"></div>
+    <div id="toasts" aria-live="polite"></div>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
